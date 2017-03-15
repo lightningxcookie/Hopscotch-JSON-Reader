@@ -1,17 +1,86 @@
 body {
     font-family: "Avenir";
     margin-left: 20px;
+    background-color: #f4eacd;
+    
+}
+
+#abilities {
+    color: black;
+    background: white;
 }
         
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid white;
+    border-radius: 10px;
+    
+}
+
+tr {
+    height: 40px;
 }
             
 table {
     border-collapse: collapse;
+    /*width: 100px;*/
+    
 }
-            
-td p {
-    margin: 15px;
+
+#variables {
+    background: #e6b600;
+    color: white;
+}
+
+#objects {
+    background: #6bdaed;
+    width: 600px;
+    color: white;
+}
+
+#scenes {
+    background: #3e83bd;
+    color: white;
+}
+
+tr {
     position: relative;
+    font-size: 15px;
+}
+
+#import {
+    width: 100px;
+    background-color: #1dd8be;
+    height: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 20px;
+    
+}
+
+#import p {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 24px;
+}
+
+#import {
+    cursor: pointer;
+}
+
+#right
+{
+    
+    float: right;
+    margin-right: 20px;
+    
+}
+
+#left {
+    float: left;
+}
+
+input[type=file] {
+    /*background-color: #1dd8be;*/
 }

@@ -5,15 +5,19 @@
         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
         <link rel="stylesheet" href="css/style.css">
+        <title>Hopscotch JSON Reader</title>
         
     </head>
     
     <body>
         
+       
         <p style="font-size:30px;"><b>Hopscotch JSON Reader</b></p>
         
         <input type="file" id="selectFiles" value="" /><br/>
-        <button id="import">Import</button>
+        <div id="import"><p>Import</p></div>
+        
+        <div id="left">
         
         <div id="stageSize">
             <p id="width">Width: </p>
@@ -52,20 +56,27 @@
             <p>Custom Objects:</p>
             <table id="customObjects"></table>
         </div>
+
+        </div>
         
         </br>
         
-        <div>
+        <div id="right">
+            
+            <div>
             <p>Variables:</p>
             <table id="variables"></table>
+            </div>
+        
+            </br>
+        
+            <div>
+                <p>Scenes:</p>
+                <table id="scenes"></table>
+            </div>
+            
         </div>
         
-        </br>
-        
-        <div>
-            <p>Scenes:</p>
-            <table id="scenes"></table>
-        </div>
         
         <script>
             

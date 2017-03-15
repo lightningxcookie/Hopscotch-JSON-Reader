@@ -112,7 +112,7 @@ function hopscotchObjects(filename){
         case "triangle.png": result = "Triangle"; break;
         case "rightTriangle.png": result = "Right Triangle"; break;
         case "rectangle.png": result = "Rectangle"; break;
-        case "tetrisX.png": result = "Z"; break;
+        case "tetrisZ.png": result = "Z"; break;
         case "tetrisT.png": result = "T"; break;
         case "tetrisL.png": result = "L"; break;
         case "corner.png": result = "Corner"; break;
@@ -122,6 +122,37 @@ function hopscotchObjects(filename){
         case "chevron.png": result = "Chevron"; break;
         case "xShape.png": result = "X"; break;
         case "tetrisLine.png": result = "Platform"; break;
+        // Characters
+        case "chillanna.png": result = "Chillanna"; break;
+        case "astro.png": result = "Cosmic Cody"; break;
+        case "robo.png": result = "Robo"; break;
+        case "stargirl.png": result = "Star Girl"; break;
+        case "monkey.png": result = "Monkey"; break;
+        case "octopus.png": result = "Octopus"; break;
+        case "gorilla.png": result = "Gorilla"; break;
+        case "cupcake.png": result = "Cupcake"; break;
+        case "bear.png": result = "Bear"; break;
+        case "dino.png": result = "Dino"; break;
+        case "frog.png": result = "Frog"; break;
+        case "greenman.png": result = "Jody"; break;
+        case "mustache.png": result = "Mr. Mustache"; break;
+        case "spacepod.png": result = "Space Pod"; break;
+        case "raccoon.png": result = "Raccoon"; break;
+        case "bird.png": result = "Bird"; break;
+        case "crocodile.png": result = "Crocodile"; break;
+        // Jungle
+        case "banyan.png": result = "Banyan"; break;
+        case "parrot-flying-object.png": result = "Parrot"; break;
+        case "mandrill.png": result = "Mandrill"; break;
+        case "miss-chief.png": result = "Miss Chief"; break;
+        case "mosquito.png": result = "Mosquito"; break;
+        case "jeepers.png": result = "Jeepers"; break;
+        case "venus.png": result = "Venus"; break;
+        case "toucan.png": result = "Toucan"; break;
+        case "anteater.png": result = "Anteater"; break;
+        case "iguana.png": result = "Iguana"; break;
+        case "sloth.png": result = "Sloth"; break;
+        case "hut.png": result = "Hut"; break
         default: result = ""
     }
          
