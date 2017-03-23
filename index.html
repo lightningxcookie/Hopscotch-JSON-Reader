@@ -18,7 +18,7 @@
         <div id="import"><p>Import</p></div>
 
         <br />
-        <p>or enter URL of project: </p><input type="text" id="projectURL" value="" /><br/>
+        <p>or enter URL of project: </p><input type="text" id="url" value="" /><br/>
         <div id="submitURLButton" class="button"><p>Get project data from URL</p></div>  <br/>
 
         <hr />
@@ -117,7 +117,19 @@
             };
 
             document.getElementById("submitURLButton").onclick = function() {
-                alert("button pressed");
+
+
+                // Get value of text field
+                var urlText = document.getElementById("url").value;
+                //alert(urlText);
+
+                
+                // Check that it is a valid URL e.g. not empty, formatted with c.gethopscotch.com etc
+                // Regex to extract last section of URL https://c.gethopscotch.com/p/ykcmajup8.html
+                // Construct new URL with https://hopscotchprojects.s3.amazonaws.com/production/ykcmajup8.hopscotch format
+                // Get json from URL
+                // getHopscotchData(json)
+
             };
 
         </script>
