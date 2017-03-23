@@ -126,10 +126,19 @@
                 var validUrlRegex = /(c\.gethopscotch.com\/p\/)\w+/;
                 if (validUrlRegex.test(urlText) == true ) {
 
-                    // Regex to extract last section of URL https://c.gethopscotch.com/p/ykcmajup8.html
-                    // Construct new URL with https://hopscotchprojects.s3.amazonaws.com/production/ykcmajup8.hopscotch format
-                    // Get json from URL
-                    // getHopscotchData(json)
+                    // Get uuid from URL, based on removing c.gethopscotch.com/p/ from the rest of the URL
+                    // This is very messy, sorry
+                    var EXPECTED_DOMAIN_LENGTH = "c.gethopscotch.com/p/".length;
+                    var url_section = urlText.match(validUrlRegex);
+                    var uuid = url_section[0].substring(EXPECTED_DOMAIN_LENGTH);
+
+                    // Construct new URL with https://hopscotchprojects.s3.amazonaws.com/production/UUID.hopscotch format
+
+                    var HOPSCOTCH_AMAZONAWS_URL_PREFIX = "https://hopscotchprojects.s3.amazonaws.com/production/";
+                    var amazonawsURL = HOPSCOTCH_AMAZONAWS_URL_PREFIX.concat(uuid, ".hopscotch");
+
+                    // Get json from this URL
+                    // then getHopscotchData(json)
 
                 } else {
                     alert("This does not appear to be a valid URL to a Hopscotch project");
