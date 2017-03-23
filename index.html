@@ -6,37 +6,43 @@
         <script type="text/javascript" src="js/script.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <title>Hopscotch JSON Reader</title>
-        
+
     </head>
-    
+
     <body>
-        
-       
+
+
         <p style="font-size:30px;"><b>Hopscotch JSON Reader</b></p>
-        
+
         <input type="file" id="selectFiles" value="" /><br/>
         <div id="import"><p>Import</p></div>
-        
+
+        <br />
+        <p>or enter URL of project: </p><input type="text" id="projectURL" value="" /><br/>
+        <div id="submitURLButton" class="button"><p>Get project data from URL</p></div>  <br/>
+
+        <hr />
+
         <div id="left">
-        
+
         <div id="stageSize">
             <p id="width">Width: </p>
             <p id="height">Height: </p>
         </div>
-        
+
         <div>
             <p id="originalUser">Username: </p>
         </div>
-        
+
         </br>
-        
+
         <div>
             <p>Abilities:</p>
             <table id="abilities"></table>
         </div>
-        
+
         </br>
-        
+
         <div>
             <p>Objects:</p>
             <table id="objects">
@@ -46,10 +52,10 @@
                     <th>Object X position</th>
                     <th>Object Y position</th>
                 </tr>
-            
+
             </table>
         </div>
-        
+
         </br>
 
         <div>
@@ -58,28 +64,28 @@
         </div>
 
         </div>
-        
+
         </br>
-        
+
         <div id="right">
-            
+
             <div>
             <p>Variables:</p>
             <table id="variables"></table>
             </div>
-        
+
             </br>
-        
+
             <div>
                 <p>Scenes:</p>
                 <table id="scenes"></table>
             </div>
-            
+
         </div>
-        
-        
+
+
         <script>
-            
+
             // Table variables
             var scenesTable = document.getElementById("scenes");
             var abilitiesTable = document.getElementById("abilities");
@@ -90,26 +96,30 @@
             // Cell variables
             var cell;
             var cell2;
-            
+
             document.getElementById("import").onclick = function()
             {
                 var files = document.getElementById("selectFiles").files;
-                
+
                 if (files.length <= 0) {
                     return false;
                 }
-                
+
                 var fileRead = new FileReader();
-                
+
                 fileRead.onload = function(e) {
-                    
+
                     var result = JSON.parse(e.target.result);
                     getHopscotchData(result);
                 }
-                
+
                 fileRead.readAsText(files.item(0));
             };
-            
+
+            document.getElementById("submitURLButton").onclick = function() {
+                alert("button pressed");
+            };
+
         </script>
     </body>
 
