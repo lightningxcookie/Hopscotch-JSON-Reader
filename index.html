@@ -133,11 +133,33 @@
                     var uuid = url_section[0].substring(EXPECTED_DOMAIN_LENGTH);
 
                     // Construct new URL with https://hopscotchprojects.s3.amazonaws.com/production/UUID.hopscotch format
+                    // testing purposes: https://c.gethopscotch.com/p/ykcmajup8.html
 
-                    var HOPSCOTCH_AMAZONAWS_URL_PREFIX = "https://hopscotchprojects.s3.amazonaws.com/production/";
-                    var amazonawsURL = HOPSCOTCH_AMAZONAWS_URL_PREFIX.concat(uuid, ".hopscotch");
+                    // This is automatically included in YQL query URL
+                    //var HOPSCOTCH_AMAZONAWS_URL_PREFIX = "https://hopscotchprojects.s3.amazonaws.com/production/";
+                    //var amazonawsURL = HOPSCOTCH_AMAZONAWS_URL_PREFIX.concat(uuid, ".hopscotch");
 
                     // Get json from this URL
+                    var YQLQueryUrl = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22https%3A%2F%2Fhopscotchprojects.s3.amazonaws.com%2Fproduction%2F".concat(uuid, ".hopscotch%22&format=json&diagnostics=true&callback=getJSONFromYQLQuery");
+
+                    var yqlQueryResults = $.getJSON(YQLQueryUrl);
+                    console.log(yqlQueryResults);
+
+                    /*
+                    var hypotheticalProjJSON = $.getJSON(YQLQueryUrl, {param1: 'value1'}, function(json, textStatus) {
+                        //optional stuff to do after success
+                    });
+                    */
+
+                    function getJSONFromYQLQuery(json)
+                    {
+                      // this doesn't get called
+                      console.log("visited yql url");
+                      console.log(yqlQueryResults);
+                      console.log(json)
+
+                    }
+
                     // then getHopscotchData(json)
 
                 } else {
