@@ -137,13 +137,22 @@
                     var YQLQueryUrl = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22https%3A%2F%2Fhopscotchprojects.s3.amazonaws.com%2Fproduction%2F".concat(uuid, ".hopscotch%22&format=json&diagnostics=true");
 
                     // Get json from this URL
-                    var yqlQueryResults = $.getJSON(YQLQueryUrl);
-                    console.log(yqlQueryResults);
+                    var yqlQueryResults = $.getJSON(YQLQueryUrl, {}, function(json, textStatus) {
+                        /*optional stuff to do after success */
+                        // console.log(yqlQueryResults);
+
+                        if (yqlQueryResults.readyState == 4) {
+                            console.log(yqlQueryResults.responseJSON);
+                        }
+
+                    });
+
+                    // console.log(yqlQueryResults.constructor === Object);
 
                     // Extract project JSON from query result
                     // doesn't work at the moment :(
-                    var projectJSON = JSON.parse(yqlQueryResults.responseJSON.query.results.body);
-                    console.log(projectJSON);
+                    //var projectJSON = JSON.parse(yqlQueryResults.responseJSON.query.results.body);
+                    //console.log(projectJSON);
 
                     // then getHopscotchData(projectJSON)
 
