@@ -142,7 +142,7 @@
                         // console.log(yqlQueryResults);
 
                         if (yqlQueryResults.readyState == 4) {
-                            console.log(yqlQueryResults.responseJSON);
+                            console.log(JSON.parse(yqlQueryResults.responseJSON.query.results.body));
                         }
 
                     });
