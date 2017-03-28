@@ -138,27 +138,23 @@
 
                     // Get json from this URL
                     var yqlQueryResults = $.getJSON(YQLQueryUrl, {}, function(json, textStatus) {
-                        /*optional stuff to do after success */
-                        // console.log(yqlQueryResults);
+
+                        // query was successful
 
                         if (yqlQueryResults.readyState == 4) {
-                            console.log(JSON.parse(yqlQueryResults.responseJSON.query.results.body));
+
+                            // Extract project JSON from query results
+                            var projectJSON = JSON.parse(yqlQueryResults.responseJSON.query.results.body);
+                            getHopscotchData(projectJSON);
                         }
 
                     });
 
-                    // console.log(yqlQueryResults.constructor === Object);
 
-                    // Extract project JSON from query result
-                    // doesn't work at the moment :(
-                    //var projectJSON = JSON.parse(yqlQueryResults.responseJSON.query.results.body);
-                    //console.log(projectJSON);
-
-                    // then getHopscotchData(projectJSON)
 
                 } else {
                     alert("This does not appear to be a valid URL to a Hopscotch project");
-                    // in future will put a error message on the page, rather than an alert
+                    // in future can put a error message on the page, rather than an alert
                 }
 
 
