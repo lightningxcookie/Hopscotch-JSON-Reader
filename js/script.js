@@ -35,6 +35,27 @@ function getHopscotchData(json)
     
     */
           
+    populateAbilitiesTable(json)
+    populateScenesTable(json)
+    populateObjectsTable(json)
+    populateVariablesTable(json)
+    populateRulesTable(json)
+    populateObjectTables(json)
+    
+    // Loops through custom objects (images)
+    for (var i = 0; i < json.customObjects.length; i++)
+    {
+        // Create new row in customObjectsTable,
+        var row = customObjectsTable.insertRow(0);
+        // insert new cell,
+        cell = row.insertCell(0);
+        // and set text of the cll to the name of the custom object.
+        cell.innerHTML = json.customObjects[i].fileName;
+    }
+}
+
+function populateAbilitiesTable(json) {
+    
     // Loops through abilites.                
     for (var i = 0; i < json.abilities.length; i++)
     {
@@ -100,7 +121,9 @@ function getHopscotchData(json)
         }
         
     } // end for
-    
+}
+
+function populateScenesTable(json) {
     
     // Loops through scenes.
     for (var i = 0; i < json.scenes.length; i++)
@@ -112,7 +135,10 @@ function getHopscotchData(json)
         // and set text to cell to the name of the scene
         cell.innerHTML = json.scenes[i].name;
     } // end for
-     
+}
+
+function populateObjectsTable(json) {
+    
     // Loops through objects.
     for (var i = 0; i < json.objects.length; i++)
     {
@@ -133,27 +159,28 @@ function getHopscotchData(json)
         xCell.innerHTML = json.objects[i].xPosition;
         yCell.innerHTML = json.objects[i].yPosition;
         
-        
         // Add object and object ID to the respective arrays
         objects.push(json.objects[i].name);
         objectIDs.push(json.objects[i].objectID);
         
+        // Create ID for object table,
         var objectTableID = json.objects[i].name.replace(/ /g,"_").toLowerCase() + "Table";
-        
+        // add the new ID to the array,
         objectTables.push(objectTableID);
+        // create new table element and set attributes,
         var table = document.createElement("table");
         table.setAttribute("id", objectTableID);
         table.setAttribute("class", "objectTable");
-        //table.addClass("objectTable");
+        // add it to the left div,
         document.getElementById("left").appendChild(table);
+        // and add a break below.
         var br = document.createElement("br");
         document.getElementById("left").appendChild(br);
         document.getElementById("left").appendChild(br);
-        //console.log(table);
     }
-    
-    //console.log(objectTables);
-    
+}
+
+function populateVariablesTable(json) {
     // Loops through variables
     for (var i = 0; i < json.variables.length; i++)
     {
@@ -164,21 +191,10 @@ function getHopscotchData(json)
         // and set text of the cell to the name of the variable.
         cell.innerHTML = json.variables[i].name;
     }
-                    
-    // Loops through custom objects (images)
-    for (var i = 0; i < json.customObjects.length; i++)
-    {
-        // Create new row in customObjectsTable,
-        var row = customObjectsTable.insertRow(0);
-        // insert new cell,
-        cell = row.insertCell(0);
-        // and set text of the cll to the name of the custom object.
-        cell.innerHTML = json.customObjects[i].fileName;
-    }
     
-    console.log(abilities)
-    console.log(objectIDs)
-    
+}
+
+function populateRulesTable(json) {
     // Loops through rules (When blocks)
     for (var i = 0; i < json.rules.length; i++)
     {
@@ -213,7 +229,9 @@ function getHopscotchData(json)
         //abilityCell.innerHTML = json.rules[i].abilityID;
         descriptionCell.innerHTML = json.rules[i].parameters[0].datum.description;
     }
-    
+}
+
+function populateObjectTables(json) {
     for (var x = 0; x < objectTables.length; x++) {
         
         var id = objectTables[x];
@@ -242,8 +260,8 @@ function getHopscotchData(json)
         
         }
     }
-    
 }
+
 
 // hopscotchObjects() takes one parameter, filename
 // and depending on the filename of the object,
