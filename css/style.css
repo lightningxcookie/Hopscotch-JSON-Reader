@@ -8,12 +8,13 @@ body {
 #abilities {
     color: black;
     background: white;
+    width: 200px;
 }
         
 table, th, td {
     border: 1px solid white;
     border-radius: 10px;
-    
+    text-align: center;
 }
 
 tr {
@@ -26,9 +27,20 @@ table {
     
 }
 
+.objectTable {
+    margin-top: 20px;
+    background: #bf2961;
+    width: 300px;
+    color: white;
+    float: left;
+    
+}
+
 #variables {
     background: #e6b600;
     color: white;
+    width: 200px;
+    
 }
 
 #objects {
@@ -37,9 +49,16 @@ table {
     color: white;
 }
 
+#rules {
+    background: #bf2961;
+    width: 600px;
+    color: white;
+}
+
 #scenes {
     background: #3e83bd;
     color: white;
+    width: 200px;
 }
 
 tr {

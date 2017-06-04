@@ -32,7 +32,11 @@
         
         <div>
             <p>Abilities:</p>
-            <table id="abilities"></table>
+            <table id="abilities">
+            <tr>
+                    <th>Ability name</th>
+                 </tr>
+            </table>
         </div>
         
         </br>
@@ -42,9 +46,11 @@
             <table id="objects">
                 <tr>
                     <th>Object name</th>
+                    <!--<th>Object ID</th>-->
                     <th>Object type</th>
                     <th>Object X position</th>
                     <th>Object Y position</th>
+            
                 </tr>
             
             </table>
@@ -53,8 +59,7 @@
         </br>
 
         <div>
-            <p>Custom Objects:</p>
-            <table id="customObjects"></table>
+            <p>Objects and blocks (new):</p>
         </div>
 
         </div>
@@ -65,14 +70,38 @@
             
             <div>
             <p>Variables:</p>
-            <table id="variables"></table>
+            <table id="variables">
+                <tr>
+                    <th>Variable name</th>
+                 </tr>    
+                
+            </table>
             </div>
         
             </br>
         
             <div>
                 <p>Scenes:</p>
-                <table id="scenes"></table>
+                <table id="scenes">
+                
+                    <tr>
+                        <th>Scene name</th>
+                    </tr>
+                
+                </table>
+            </div>
+
+            <div>
+                <p>Blocks:</p>
+                <table id="rules">
+                <tr>
+                    <th>Object name</th>
+                    <th>Blocks</th>
+                    <th>When rule</th>
+            
+                </tr>
+                
+                </table>
             </div>
             
         </div>
@@ -86,6 +115,7 @@
             var objectsTable = document.getElementById("objects");
             var customObjectsTable = document.getElementById("customObjects");
             var variablesTable = document.getElementById("variables");
+            var rulesTable = document.getElementById("rules");
 
             // Cell variables
             var cell;
