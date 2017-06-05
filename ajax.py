@@ -12,6 +12,10 @@ def save_file(json_data, project_uuid):
     with open(project_file_path, 'w') as project_file:
         json.dump(obj=json_data, fp=project_file, ensure_ascii=False)
 
+def save_file_handler(request):
+    json_data = request.get_field('json')
+    uuid = request.get_field('uuid')
+    save_file(json_data, uuid)
 
 #dictionary = {'hi': 'hello'}
 #save_file(dictionary, 'sdfsdfasdf')

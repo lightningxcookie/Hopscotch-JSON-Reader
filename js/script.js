@@ -165,3 +165,22 @@ function hopscotchObjects(filename){
 
     return result;
 }
+
+function saveFile(project_json)
+{
+  project_json = {'uuid': 'sdfsdfsdf', 'eventParameters': []}
+
+  $.ajax({
+    url: '/ajax/save_file',
+    type: 'post',
+    dataType: 'json',
+    data: {json: project_json,
+          uuid: project_json.uuid}
+  })
+  .done(function() {
+    console.log("file saved");
+  })
+  .fail(function() {
+    console.log("error with saving file");
+  });
+}
