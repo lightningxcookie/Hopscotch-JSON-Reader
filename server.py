@@ -9,6 +9,6 @@ def index_handler(request):
 
 server = Server(port=3000)
 server.register(r'/', index_handler)
-server.register(r'/ajax/save_file', ajax.save_file)
+server.register(r'/ajax/save_file', ajax.save_file_handler)
 
 server.run()
