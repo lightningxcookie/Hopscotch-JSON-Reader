@@ -99,7 +99,7 @@ function getHopscotchData(json)
             
         }
         
-    } // end for
+    } // end for 
     
     
     // Loops through scenes.
@@ -180,7 +180,7 @@ function getHopscotchData(json)
     console.log(objectIDs)
     
     // Loops through rules (When blocks)
-    for (var i = 0; i < json.rules.length; i++)
+    /*for (var i = 0; i < json.rules.length; i++)
     {
         // Create new row in customObjectsTable,
         var row = rulesTable.insertRow(1);
@@ -212,7 +212,7 @@ function getHopscotchData(json)
         // and set text of cells to the corresponding data.
         //abilityCell.innerHTML = json.rules[i].abilityID;
         descriptionCell.innerHTML = json.rules[i].parameters[0].datum.description;
-    }
+    }*/
     
     for (var x = 0; x < objectTables.length; x++) {
         
