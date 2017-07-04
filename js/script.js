@@ -159,6 +159,7 @@ function getHopscotchData(json)
     {
         // Create new row in variablesTable,
         var row = variablesTable.insertRow(1);
+        
         // insert new cell,
         cell = row.insertCell(0);
         // and set text of the cell to the name of the variable.
