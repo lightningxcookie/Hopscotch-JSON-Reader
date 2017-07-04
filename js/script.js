@@ -4,50 +4,115 @@ var abilitiesTable = document.getElementById("abilities");
 var objectsTable = document.getElementById("objects");
 var customObjectsTable = document.getElementById("customObjects");
 var variablesTable = document.getElementById("variables");
+var rulesTable = document.getElementById("rules");
 
 // Cell variables
 var cell;
 var cell2;
 
+var objects = [];
+var objectIDs = [];
+var objectTables = [];
+
+var abilities = new Array();
+var listOfBlocks = [];
+
 // Retrieves data from imported JSON file and send it to HTML file
 function getHopscotchData(json)
 {
     // Prints JSON data to the console.
-    console.log(json);
-
+    console.log(json); 
+    
     // Stage size
     document.getElementById("width").innerHTML = document.getElementById("width").innerHTML + json.stageSize.width;
     document.getElementById("height").innerHTML = document.getElementById("height").innerHTML +  json.stageSize.height;
-
-    // Original user
-    //document.getElementById("originalUser").innerHTML = document.getElementById("originalUser").innerHTML + json.original_user.nickname;
-
-    // Loops through abilites.
+                 
+    /* 
+    
+    Original user (only works for remixed projects)
+    
+    document.getElementById("originalUser").innerHTML = document.getElementById("originalUser").innerHTML + json.original_user.nickname;
+    
+    */
+          
+    // Loops through abilites.                
     for (var i = 0; i < json.abilities.length; i++)
     {
         // If the ability has a name index,
         if (json.abilities[i].name !== undefined)
         {
             // create new row in abilitesTable,
-            var row = abilitiesTable.insertRow(0);
+            var row = abilitiesTable.insertRow(1);
             // insert new cell,
             cell = row.insertCell(0);
             // and set text to cell to the name of the ability.
-            cell.innerHTML = json.abilities[i].name;
-        } // end if
-    } // end for
-
+            cell.innerHTML = json.abilities[i].name;                
+        } // end if          
+        
+        var keyToUse = json.abilities[i].abilityID;
+        
+        abilities[keyToUse] = "";
+        
+        for (key in json.abilities[i].blocks)
+        {
+            var parameters = json.abilities[i].blocks[key].parameters
+            
+            if (abilities[keyToUse] == "")
+            {
+                if(json.abilities[i].blocks[key].parameters != undefined)
+                {
+                    if (parameters.length == 2)
+                    {
+                        abilities[keyToUse] = json.abilities[i].blocks[key].description + "("  + parameters[0].value + ") " + "("  + parameters[1].value + ")";
+                    }
+                    else 
+                    {
+                        abilities[keyToUse] = json.abilities[i].blocks[key].description + "("  + parameters[0].value + ")";
+                    }
+                }
+                else
+                {
+                    abilities[keyToUse] = json.abilities[i].blocks[key].description;    
+                }
+            }
+            else
+            {
+                if(json.abilities[i].blocks[key].parameters != undefined)
+                {
+                    listOfBlocks.push(json.abilities[i].blocks[key].description + "(" + parameters[0].value +")")
+                    
+                    if (parameters.length == 2)
+                    {
+                        abilities[keyToUse] = abilities[json.abilities[i].abilityID] + "<br>" + json.abilities[i].blocks[key].description + "("  + parameters[0].value + ") " + "("  + parameters[1].value + ")";
+                    }
+                    else 
+                    {
+                        abilities[keyToUse] = abilities[json.abilities[i].abilityID] + "<br>" + json.abilities[i].blocks[key].description + "("  + parameters[0].value + ")";
+                    }
+                }
+                else
+                {
+                    abilities[keyToUse] = abilities[json.abilities[i].abilityID] + "<br>" + json.abilities[i].blocks[key].description;
+                }
+                
+            }
+            
+        }
+        
+    } // end for 
+    
+    
     // Loops through scenes.
     for (var i = 0; i < json.scenes.length; i++)
     {
         // Create new row in scenesTable,
-        var row = scenesTable.insertRow(0);
+        var row = scenesTable.insertRow(1);
         // insert new cell,
         cell = row.insertCell(0);
         // and set text to cell to the name of the scene
         cell.innerHTML = json.scenes[i].name;
     } // end for
-
+     
     // Loops through objects.
     for (var i = 0; i < json.objects.length; i++)
     {
@@ -55,52 +120,137 @@ function getHopscotchData(json)
         var row = objectsTable.insertRow(1);
         // insert new cells, for name, type, x position and y position,
         var nameCell = row.insertCell(0);
+        
         var typeCell = row.insertCell(1);
         var xCell = row.insertCell(2);
         var yCell = row.insertCell(3);
-
+        //var idCell = row.insertCell(4);
+                    
         // and set text of cells to the corresponding data.
         nameCell.innerHTML = json.objects[i].name;
+        //idCell.innerHTML = json.objects[i].objectID;
         typeCell.innerHTML = hopscotchObjects(json.objects[i].filename);
         xCell.innerHTML = json.objects[i].xPosition;
         yCell.innerHTML = json.objects[i].yPosition;
+        
+        
+        // Add object and object ID to the respective arrays
+        objects.push(json.objects[i].name);
+        objectIDs.push(json.objects[i].objectID);
+        
+        var objectTableID = json.objects[i].name.replace(/ /g,"_").toLowerCase() + "Table";
+        
+        objectTables.push(objectTableID);
+        var table = document.createElement("table");
+        table.setAttribute("id", objectTableID);
+        table.setAttribute("class", "objectTable");
+        //table.addClass("objectTable");
+        document.getElementById("left").appendChild(table);
+        var br = document.createElement("br");
+        document.getElementById("left").appendChild(br);
+        document.getElementById("left").appendChild(br);
+        //console.log(table);
     }
-
-    // Loops through variables if there are any
-
-    if (json.variables != null) {
-      for (var i = 0; i < json.variables.length; i++)
-      {
-          // Create new row in variablesTable,
-          var row = variablesTable.insertRow(0);
-          // insert new cell,
-          cell = row.insertCell(0);
-          // and set text of the cell to the name of the variable
-          cell.innerHTML = json.variables[i].name;
-      }
+    
+    //console.log(objectTables);
+    
+    // Loops through variables
+    for (var i = 0; i < json.variables.length; i++)
+    {
+        // Create new row in variablesTable,
+        var row = variablesTable.insertRow(1);
+        
+        // insert new cell,
+        cell = row.insertCell(0);
+        // and set text of the cell to the name of the variable.
+        cell.innerHTML = json.variables[i].name;
     }
-
-    // Loops through custom objects (images) if there are any
-
-    if (json.customObjects != null) {
-      for (var i = 0; i < json.customObjects.length; i++)
-      {
-          // Create new row in customObjectsTable,
-          var row = customObjectsTable.insertRow(0);
-          // insert new cell,
-          cell = row.insertCell(0);
-          // and set text of the cll to the name of the variable.
-          cell.innerHTML = json.customObjects[i].name;
-      }
+                    
+    // Loops through custom objects (images)
+    for (var i = 0; i < json.customObjects.length; i++)
+    {
+        // Create new row in customObjectsTable,
+        var row = customObjectsTable.insertRow(0);
+        // insert new cell,
+        cell = row.insertCell(0);
+        // and set text of the cll to the name of the custom object.
+        cell.innerHTML = json.customObjects[i].fileName;
     }
-
+    
+    console.log(abilities)
+    console.log(objectIDs)
+    
+    // Loops through rules (When blocks)
+    /*for (var i = 0; i < json.rules.length; i++)
+    {
+        // Create new row in customObjectsTable,
+        var row = rulesTable.insertRow(1);
+        
+        var nameCell = row.insertCell(0);
+        var blocksCell = row.insertCell(1);
+        var descriptionCell = row.insertCell(2);
+        
+        // Loops through the objectIDs array
+        for (var x = 0; x < objectIDs.length; x++)
+        {
+            // Checks for matches with object IDs and the objectID of the rule
+            if (objectIDs[x] == json.rules[i].objectID)
+            {
+                // If there is a match, set the text of the idCell to the name of the object.
+                nameCell.innerHTML = objects[x];
+            }
+            
+        }
+        
+        for (key in abilities)
+        {
+            if (key == json.rules[i].abilityID)
+            {
+                blocksCell.innerHTML = abilities[key]; 
+            }
+        }
+        
+        // and set text of cells to the corresponding data.
+        //abilityCell.innerHTML = json.rules[i].abilityID;
+        descriptionCell.innerHTML = json.rules[i].parameters[0].datum.description;
+    }*/
+    
+    for (var x = 0; x < objectTables.length; x++) {
+        
+        var id = objectTables[x];
+        var currentTable = document.getElementById(id);
+        
+        var nameRow = currentTable.insertRow(0);
+        var nameCell = nameRow.insertCell(0);
+        nameCell.innerHTML = json.objects[x].name.bold();
+        
+        for (var i = 0; i < json.rules.length; i++)
+        {
+            if (json.rules[i].objectID == objectIDs[x]) {
+                for (key in abilities)
+                {
+                    if (key == json.rules[i].abilityID)
+                    {
+                        var row = currentTable.insertRow(currentTable.rows.length);
+            
+                        var whenCell = row.insertCell(0);
+                        whenCell.innerHTML = json.rules[i].parameters[0].datum.description;
+                        var blocksCell = row.insertCell(1);
+                        blocksCell.innerHTML = abilities[key]; 
+                    }
+                }
+            }
+        
+        }
+    }
+    
 }
 
 // hopscotchObjects() takes one parameter, filename
 // and depending on the filename of the object,
 // return the correct object type.
 function hopscotchObjects(filename){
-
+                
     // New variable to store object type (string)
     var result = "";
     switch(filename) {
@@ -160,8 +310,8 @@ function hopscotchObjects(filename){
         case "iguana.png": result = "Iguana"; break;
         case "sloth.png": result = "Sloth"; break;
         case "hut.png": result = "Hut"; break
-        default: result = ""
+        default: result = "Image"
     }
-
+         
     return result;
 }
