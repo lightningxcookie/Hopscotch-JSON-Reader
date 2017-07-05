@@ -33,69 +33,10 @@ function getHopscotchData(json)
             // insert new cell,
             cell = row.insertCell(0);
             // and set text to cell to the name of the ability.
-<<<<<<< HEAD
             cell.innerHTML = json.abilities[i].name;
         } // end if
     } // end for
 
-=======
-            cell.innerHTML = json.abilities[i].name;                
-        } // end if          
-        
-        var keyToUse = json.abilities[i].abilityID;
-        
-        abilities[keyToUse] = "";
-        
-        for (key in json.abilities[i].blocks)
-        {
-            var parameters = json.abilities[i].blocks[key].parameters
-            
-            if (abilities[keyToUse] == "")
-            {
-                if(json.abilities[i].blocks[key].parameters != undefined)
-                {
-                    if (parameters.length == 2)
-                    {
-                        abilities[keyToUse] = json.abilities[i].blocks[key].description + "("  + parameters[0].value + ") " + "("  + parameters[1].value + ")";
-                    }
-                    else 
-                    {
-                        abilities[keyToUse] = json.abilities[i].blocks[key].description + "("  + parameters[0].value + ")";
-                    }
-                }
-                else
-                {
-                    abilities[keyToUse] = json.abilities[i].blocks[key].description;    
-                }
-            }
-            else
-            {
-                if(json.abilities[i].blocks[key].parameters != undefined)
-                {
-                    listOfBlocks.push(json.abilities[i].blocks[key].description + "(" + parameters[0].value +")")
-                    
-                    if (parameters.length == 2)
-                    {
-                        abilities[keyToUse] = abilities[json.abilities[i].abilityID] + "<br>" + json.abilities[i].blocks[key].description + "("  + parameters[0].value + ") " + "("  + parameters[1].value + ")";
-                    }
-                    else 
-                    {
-                        abilities[keyToUse] = abilities[json.abilities[i].abilityID] + "<br>" + json.abilities[i].blocks[key].description + "("  + parameters[0].value + ")";
-                    }
-                }
-                else
-                {
-                    abilities[keyToUse] = abilities[json.abilities[i].abilityID] + "<br>" + json.abilities[i].blocks[key].description;
-                }
-                
-            }
-            
-        }
-        
-    } // end for
-    
-    
->>>>>>> parent of b8f2bf8... Disable old object/blocks table
     // Loops through scenes.
     for (var i = 0; i < json.scenes.length; i++)
     {
@@ -138,7 +79,6 @@ function getHopscotchData(json)
           cell.innerHTML = json.variables[i].name;
       }
     }
-<<<<<<< HEAD
 
     // Loops through custom objects (images) if there are any
 
@@ -152,74 +92,6 @@ function getHopscotchData(json)
           // and set text of the cll to the name of the variable.
           cell.innerHTML = json.customObjects[i].name;
       }
-=======
-    
-    console.log(abilities)
-    console.log(objectIDs)
-    
-    // Loops through rules (When blocks)
-    for (var i = 0; i < json.rules.length; i++)
-    {
-        // Create new row in customObjectsTable,
-        var row = rulesTable.insertRow(1);
-        
-        var nameCell = row.insertCell(0);
-        var blocksCell = row.insertCell(1);
-        var descriptionCell = row.insertCell(2);
-        
-        // Loops through the objectIDs array
-        for (var x = 0; x < objectIDs.length; x++)
-        {
-            // Checks for matches with object IDs and the objectID of the rule
-            if (objectIDs[x] == json.rules[i].objectID)
-            {
-                // If there is a match, set the text of the idCell to the name of the object.
-                nameCell.innerHTML = objects[x];
-            }
-            
-        }
-        
-        for (key in abilities)
-        {
-            if (key == json.rules[i].abilityID)
-            {
-                blocksCell.innerHTML = abilities[key]; 
-            }
-        }
-        
-        // and set text of cells to the corresponding data.
-        //abilityCell.innerHTML = json.rules[i].abilityID;
-        descriptionCell.innerHTML = json.rules[i].parameters[0].datum.description;
-    }
-    
-    for (var x = 0; x < objectTables.length; x++) {
-        
-        var id = objectTables[x];
-        var currentTable = document.getElementById(id);
-        
-        var nameRow = currentTable.insertRow(0);
-        var nameCell = nameRow.insertCell(0);
-        nameCell.innerHTML = json.objects[x].name.bold();
-        
-        for (var i = 0; i < json.rules.length; i++)
-        {
-            if (json.rules[i].objectID == objectIDs[x]) {
-                for (key in abilities)
-                {
-                    if (key == json.rules[i].abilityID)
-                    {
-                        var row = currentTable.insertRow(currentTable.rows.length);
-            
-                        var whenCell = row.insertCell(0);
-                        whenCell.innerHTML = json.rules[i].parameters[0].datum.description;
-                        var blocksCell = row.insertCell(1);
-                        blocksCell.innerHTML = abilities[key]; 
-                    }
-                }
-            }
-        
-        }
->>>>>>> parent of b8f2bf8... Disable old object/blocks table
     }
 
 }
