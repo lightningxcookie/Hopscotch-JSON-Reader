@@ -2,33 +2,45 @@ body {
     font-family: "Avenir";
     margin-left: 20px;
     background-color: #f4eacd;
-
+    
 }
 
 #abilities {
     color: black;
     background: white;
+    width: 200px;
 }
-
+        
 table, th, td {
     border: 1px solid white;
     border-radius: 10px;
-
+    text-align: center;
 }
 
 tr {
     height: 40px;
 }
-
+            
 table {
     border-collapse: collapse;
     /*width: 100px;*/
+    
+}
 
+.objectTable {
+    margin-top: 20px;
+    background: #bf2961;
+    width: 300px;
+    color: white;
+    float: left;
+    
 }
 
 #variables {
     background: #e6b600;
     color: white;
+    width: 200px;
+    
 }
 
 #objects {
@@ -37,9 +49,16 @@ table {
     color: white;
 }
 
+#rules {
+    background: #bf2961;
+    width: 600px;
+    color: white;
+}
+
 #scenes {
     background: #3e83bd;
     color: white;
+    width: 200px;
 }
 
 tr {
@@ -56,7 +75,7 @@ tr {
     border-radius: 5px;
     position: relative;
     margin-top: 20px;
-
+    
 }
 
 #import p {
@@ -69,24 +88,12 @@ tr {
     cursor: pointer;
 }
 
-.button {
-  width: 200px;
-  height: 40px;
-  background-color: #1dd8be;
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  position:relative;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
 #right
 {
-
+    
     float: right;
     margin-right: 20px;
-
+    
 }
 
 #left {
