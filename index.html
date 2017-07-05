@@ -6,116 +6,147 @@
         <script type="text/javascript" src="js/script.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <title>Hopscotch JSON Reader</title>
-
+        
     </head>
-
+    
     <body>
-
-
+        
+       
         <p style="font-size:30px;"><b>Hopscotch JSON Reader</b></p>
-
+        
         <input type="file" id="selectFiles" value="" /><br/>
         <div id="import"><p>Import</p></div>
-
-        <br />
-        <p>or enter URL of project: </p><input type="text" id="url" value="" /><br/>
-        <div id="submitURLButton" class="button"><p>Get project data from URL</p></div>  <br/>
+        
+         <br />
+         <p>or enter URL of project: </p><input type="text" id="url" value="" /><br/>
+         <div id="submitURLButton" class="button"><p>Get project data from URL</p></div>  <br/>
 
         <hr />
-
+        
         <div id="left">
-
+        
         <div id="stageSize">
             <p id="width">Width: </p>
             <p id="height">Height: </p>
         </div>
-
+        
         <div>
             <p id="originalUser">Username: </p>
         </div>
-
+        
         </br>
-
+        
         <div>
             <p>Abilities:</p>
-            <table id="abilities"></table>
+            <table id="abilities">
+            <tr>
+                    <th>Ability name</th>
+                 </tr>
+            </table>
         </div>
-
+        
         </br>
-
+        
         <div>
             <p>Objects:</p>
             <table id="objects">
                 <tr>
                     <th>Object name</th>
+                    <!--<th>Object ID</th>-->
                     <th>Object type</th>
                     <th>Object X position</th>
                     <th>Object Y position</th>
+            
                 </tr>
-
+            
             </table>
         </div>
-
+        
         </br>
 
         <div>
-            <p>Custom Objects:</p>
-            <table id="customObjects"></table>
+            <p>Objects and blocks (new):</p>
         </div>
 
         </div>
-
+        
         </br>
-
+        
         <div id="right">
-
+            
             <div>
             <p>Variables:</p>
-            <table id="variables"></table>
+            <table id="variables">
+                <tr>
+                    <th>Variable name</th>
+                 </tr>    
+                
+            </table>
             </div>
-
+        
             </br>
-
+        
             <div>
                 <p>Scenes:</p>
-                <table id="scenes"></table>
+                <table id="scenes">
+                
+                    <tr>
+                        <th>Scene name</th>
+                    </tr>
+                
+                </table>
             </div>
 
+            <!--<div>
+                <p>Blocks:</p>
+                <table id="rules">
+                <tr>
+                    <th>Object name</th>
+                    <th>Blocks</th>
+                    <th>When rule</th>
+            
+                </tr>
+                
+                </table>
+            </div>-->
+            
         </div>
-
-
+        
+        
         <script>
-
+            
             // Table variables
             var scenesTable = document.getElementById("scenes");
             var abilitiesTable = document.getElementById("abilities");
             var objectsTable = document.getElementById("objects");
             var customObjectsTable = document.getElementById("customObjects");
             var variablesTable = document.getElementById("variables");
+            var rulesTable = document.getElementById("rules");
 
             // Cell variables
             var cell;
             var cell2;
-
+            
             document.getElementById("import").onclick = function()
             {
                 var files = document.getElementById("selectFiles").files;
-
+                
                 if (files.length <= 0) {
                     return false;
                 }
-
+                
                 var fileRead = new FileReader();
-
+                
                 fileRead.onload = function(e) {
-
+                    
                     var result = JSON.parse(e.target.result);
                     getHopscotchData(result);
                 }
-
+                
                 fileRead.readAsText(files.item(0));
             };
-
+            
+            
             document.getElementById("submitURLButton").onclick = function() {
 
 
@@ -147,8 +178,7 @@
                             var projectJSON = JSON.parse(yqlQueryResults.responseJSON.query.results.body);
                             getHopscotchData(projectJSON);
                         }
-
-                    });
+                   });
 
 
 
@@ -158,9 +188,8 @@
                 }
 
 
-
             };
-
+            
         </script>
     </body>
 
