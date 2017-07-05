@@ -2,7 +2,7 @@ body {
     font-family: "Avenir";
     margin-left: 20px;
     background-color: #f4eacd;
-    
+
 }
 
 #abilities {
@@ -10,7 +10,7 @@ body {
     background: white;
     width: 200px;
 }
-        
+
 table, th, td {
     border: 1px solid white;
     border-radius: 10px;
@@ -20,11 +20,11 @@ table, th, td {
 tr {
     height: 40px;
 }
-            
+
 table {
     border-collapse: collapse;
     /*width: 100px;*/
-    
+
 }
 
 .objectTable {
@@ -33,14 +33,14 @@ table {
     width: 300px;
     color: white;
     float: left;
-    
+
 }
 
 #variables {
     background: #e6b600;
     color: white;
     width: 200px;
-    
+
 }
 
 #objects {
@@ -75,7 +75,7 @@ tr {
     border-radius: 5px;
     position: relative;
     margin-top: 20px;
-    
+
 }
 
 #import p {
@@ -90,10 +90,10 @@ tr {
 
 #right
 {
-    
+
     float: right;
     margin-right: 20px;
-    
+
 }
 
 #left {
@@ -102,4 +102,16 @@ tr {
 
 input[type=file] {
     /*background-color: #1dd8be;*/
+}
+
+.button {
+    width: 200px;
+    height: 40px;
+    background-color: #1dd8be;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    position:relative;
+    margin-top: 20px;
+    cursor: pointer;
 }
