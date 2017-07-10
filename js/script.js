@@ -39,7 +39,7 @@ function getHopscotchData(json)
     populateScenesTable(json)
     populateObjectsTable(json)
     populateVariablesTable(json)
-    populateRulesTable(json)
+    //populateRulesTable(json)
     populateObjectTables(json)
     
     // Loops through custom objects (images)
