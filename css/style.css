@@ -78,6 +78,29 @@ tr {
 
 }
 
+#save {
+    width: 100px;
+    background-color: #1dd8be;
+    height: 40px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 20px;
+    
+}
+
+#save p {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 4px;
+    font-size: 15px;
+}
+
+#save {
+    cursor: pointer;
+}
+
 #import p {
     position: absolute;
     margin-top: 10px;
@@ -100,7 +123,7 @@ tr {
     float: left;
 }
 
-input[type=file] {
+input {
     /*background-color: #1dd8be;*/
 }
 
@@ -114,4 +137,25 @@ input[type=file] {
     position:relative;
     margin-top: 20px;
     cursor: pointer;
+}
+
+input{
+    border-radius: 10px;
+    border-width: 0px;
+    height: 20px;
+}
+
+#results {
+    height: 400px;
+    width: 100%;
+    border-width: 0px;
+}
+
+.bubble {
+    width: 60px;
+    text-align: center;
+}
+
+.inline {
+    display: inline;
 }

@@ -10,6 +10,7 @@
     </head>
 
     <body>
+
         <p style="font-size:30px;"><b>Hopscotch JSON Reader</b></p>
 
         <input type="file" id="selectFiles" value="" /><br/>
@@ -24,8 +25,11 @@
         <div id="left">
 
         <div id="stageSize">
-            <p id="width">Width: </p>
-            <p id="height">Height: </p>
+            <p class="inline">Width: </p> 
+            <input type="text" id="width" class="bubble inline"></input> 
+            <br><br>
+            <p class="inline">Height: </p>
+            <input type="text" id="height" class="bubble inline"></input>
         </div>
 
         <div>
@@ -95,6 +99,15 @@
                 </table>
             </div>
 
+            <hr>
+    
+            <div id="save">
+                <p>Save changes</p>
+            </div>
+            <br>
+            <textarea id="results"></textarea>
+            
+
             <!--<div>
                 <p>Blocks:</p>
                 <table id="rules">
@@ -143,6 +156,27 @@
 
                 fileRead.readAsText(files.item(0));
             };
+            
+            document.getElementById("save").onclick = function() {
+
+                saveChanges()
+            }
+            document.getElementById("submitURLButton").onclick = function() {
+
+
+                // Get value of text field
+                var urlText = document.getElementById("url").value;
+
+                // Check the text entered contains c.gethopscotch.com, meaning it is a valid url to a Hopscotch project
+                var validUrlRegex = /(c\.gethopscotch.com\/p\/)\w+/;
+                if (validUrlRegex.test(urlText) == true ) {
+
+                    // Get uuid from URL, based on removing c.gethopscotch.com/p/ from the rest of the URL
+                    var EXPECTED_DOMAIN_LENGTH = "c.gethopscotch.com/p/".length;
+                    var url_section = urlText.match(validUrlRegex)[0];
+                }
+                
+            }
 
         </script>
 

@@ -17,15 +17,19 @@ var objectTables = [];
 var abilities = new Array();
 var listOfBlocks = [];
 
+var projectJson;
+
 // Retrieves data from imported JSON file and send it to HTML file
 function getHopscotchData(json)
 {
     // Prints JSON data to the console.
     console.log(json); 
     
+    projectJson = json;
+    
     // Stage size
-    document.getElementById("width").innerHTML = document.getElementById("width").innerHTML + json.stageSize.width;
-    document.getElementById("height").innerHTML = document.getElementById("height").innerHTML +  json.stageSize.height;
+    document.getElementById("width").value = json.stageSize.width;
+    document.getElementById("height").value = json.stageSize.height;
                  
     /* 
     
@@ -262,6 +266,18 @@ function populateObjectTables(json) {
     }
 }
 
+function saveChanges() {
+    
+    if (projectJson !== undefined) {
+        projectJson.stageSize.width = parseInt( document.getElementById("width").value);
+        
+        projectJson.stageSize.height = parseInt( document.getElementById("height").value);
+        console.log(projectJson);
+        
+        document.getElementById("results").innerHTML = JSON.stringify(projectJson);
+    }
+    
+}
 
 // hopscotchObjects() takes one parameter, filename
 // and depending on the filename of the object,
