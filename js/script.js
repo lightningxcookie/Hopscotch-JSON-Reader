@@ -40,11 +40,14 @@ function getHopscotchData(json)
     */
           
     populateAbilitiesTable(json)
-    populateScenesTable(json)
     populateObjectsTable(json)
     populateVariablesTable(json)
-    //populateRulesTable(json)
     populateObjectTables(json)
+    
+    // See line 95 in index.html
+    //populateScenesTable(json)
+    // Old table for displaying blocks and objects
+    //populateRulesTable(json)
     
     // Loops through custom objects (images)
     for (var i = 0; i < json.customObjects.length; i++)
